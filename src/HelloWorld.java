@@ -74,6 +74,7 @@ public class HelloWorld {
         // array
         int[] nums = {1, 2};
         Arrays.sort(nums);
+        // Queue
         // Stack
         Stack<Character> stack = new Stack<Character>();
         stack.push('q');
@@ -84,10 +85,10 @@ public class HelloWorld {
         // heap, priority queue
         Comparator<String> comparator = new StringComparator();
         PriorityQueue<String> pq = new PriorityQueue<String>(len, comparator);
-//        pq.size();
-//        pq.peek();
-//        pq.poll();
-//        pq.add("abc");
+        pq.add("abc");
+        pq.size();
+        System.out.println(pq.peek());
+        pq.poll();
         // String char
         System.out.println(s1);
         System.out.println(res);
