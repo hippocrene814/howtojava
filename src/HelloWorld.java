@@ -9,9 +9,6 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.Stack;
 
-/**
- * Created by yhua on 3/31/16.
- */
 public class HelloWorld {
     public static int lengthOfLongestSubstring(String s) {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
@@ -52,45 +49,68 @@ public class HelloWorld {
     }
 
     public static void main(String[] args) {
-        int a[] = new int[2];
-        int len = a.length;
-        System.out.println(len);
-        System.out.println("Hello World!");
+        System.out.println("Test starts...");
         int res = lengthOfLongestSubstring("aa");
-        String s1 = "";
-        char c = 'c';
-        s1 += c;
+        System.out.println(res);
+        System.out.println("Test end...");
+
+        // Java Basic
+        System.out.println("THE BEGINNING.");
+        // Array
+        System.out.println("Array:");
+        int array[] = new int[2];
+        int len = array.length;
+        System.out.println(len);
+        int[] array2 = {2, 1, 3};
+        Arrays.sort(array2);
         // List
-        List<Integer> row = new ArrayList<Integer>();
+        System.out.println("List:");
+        List<Integer> list = new ArrayList<>();
         int a1 = 1;
-        row.add(a1);
+        list.add(a1);
+        System.out.println(list.get(0));
         // Map
         // Set
-        Set<List<Integer>> set = new HashSet<List<Integer>>();
-        List<List<Integer>> res1 = new ArrayList<List<Integer>>();
+        System.out.println("Set:");
+        Set<List<Integer>> set = new HashSet<>();
+        List<List<Integer>> lli = new ArrayList<>();
         for(List<Integer> li : set) {
-            res1.add(li);
+            lli.add(li);
         }
-        // array
-        int[] nums = {1, 2};
-        Arrays.sort(nums);
         // Queue
         // Stack
-        Stack<Character> stack = new Stack<Character>();
+        System.out.println("Stack:");
+        Stack<Character> stack = new Stack<>();
         stack.push('q');
         stack.empty();
-        char char1 = stack.peek();
-        System.out.println(char1);
+        System.out.println(stack.peek());
         stack.pop();
         // heap, priority queue
+        System.out.println("PriorityQueue:");
         Comparator<String> comparator = new StringComparator();
-        PriorityQueue<String> pq = new PriorityQueue<String>(len, comparator);
+        PriorityQueue<String> pq = new PriorityQueue<>(len, comparator);
         pq.add("abc");
         pq.size();
         System.out.println(pq.peek());
         pq.poll();
-        // String char
+        // Char
+        System.out.println("Character:");
+        /**
+         * The Character class wraps a value of the primitive type char in an object.
+         * An object of type Character contains a single field whose type is char.
+         * In addition, this class provides several methods for determining a character's category
+         * (lowercase letter, digit, etc.) and for converting characters from uppercase to lowercase and vice versa.
+         * Character information is based on the Unicode Standard, version 6.0.0.
+         */
+        char ch = 'a';
+        char chUpper = Character.toUpperCase(ch);
+        System.out.println(ch);
+        System.out.println(chUpper);
+        String s1 = "";
+        char c = 'c';
+        s1 += c;
         System.out.println(s1);
-        System.out.println(res);
+        // String char
+        System.out.println("THE END.");
     }
 }
