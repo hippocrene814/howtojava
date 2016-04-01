@@ -93,8 +93,22 @@ public class HelloWorld {
         pq.size();
         System.out.println(pq.peek());
         pq.poll();
-        // Char
-        System.out.println("Character:");
+        // int
+        /**
+         * Integer is a class with a single field of type int
+         * byte has Byte
+         * short has Short
+         * int has Integer
+         * long has Long
+         * boolean has Boolean
+         * char has Character
+         * float has Float
+         * double has Double
+         */
+        System.out.println("Integer:");
+        int integer = Integer.parseInt("1");
+        System.out.println(integer);
+        // char
         /**
          * The Character class wraps a value of the primitive type char in an object.
          * An object of type Character contains a single field whose type is char.
@@ -102,6 +116,7 @@ public class HelloWorld {
          * (lowercase letter, digit, etc.) and for converting characters from uppercase to lowercase and vice versa.
          * Character information is based on the Unicode Standard, version 6.0.0.
          */
+        System.out.println("Character:");
         char ch = 'a';
         char chUpper = Character.toUpperCase(ch);
         System.out.println(ch);
