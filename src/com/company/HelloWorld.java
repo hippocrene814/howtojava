@@ -58,6 +58,12 @@ public class HelloWorld {
 
         // Java Basic
         System.out.println("THE BEGINNING.");
+        // Int
+        System.out.println("Int:");
+        int intA = Integer.MAX_VALUE;
+        int intB = Integer.MIN_VALUE;
+        System.out.println(intA); // INT_MAX 2147483647
+        System.out.println(intB); // INT_MIN -2147483648
         // Array
         System.out.println("Array:");
         int array[] = new int[2];
