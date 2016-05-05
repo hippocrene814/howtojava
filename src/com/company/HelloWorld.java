@@ -12,31 +12,6 @@ import java.util.Set;
 import java.util.Stack;
 
 public class HelloWorld {
-    public static int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int len = s.length();
-        if (len == 0) {
-            return 0;
-        }
-        int res = 1;
-        int indx1 = 0; // start index of substring
-        map.put(s.charAt(indx1), indx1);
-        int indx2 = 1;
-        while (indx2 < len && indx1 <= indx2) {
-            if (map.containsKey(s.charAt(indx2)) && map.get(s.charAt(indx2)) >= indx1) { // the duplicate indx must between indx1 and indx2
-                indx1 = map.get(s.charAt(indx2)) + 1;
-            } else {
-                int tmp = indx2 - indx1 + 1;
-                if (tmp > res) {
-                    res = tmp;
-                }
-            }
-            map.put(s.charAt(indx2), indx2);
-            indx2++;
-        }
-        return res;
-    }
-
     public static class StringComparator implements Comparator<String> {
         @Override
         public int compare(String x, String y) {
@@ -50,11 +25,81 @@ public class HelloWorld {
         }
     }
 
+    public static void nextPermutation(int[] nums) {
+        // 从右向左找第一个nums[i] < nums[i+1]的i
+        // 找大于nums[i]的最小nums[minIndex]
+        // swap(nums[i], nums[minIndex])
+        // sort(i+1, len - 1)
+
+        int len = nums.length;
+        if(len == 0) {
+            return;
+        }
+        for(int i = len - 2; i >= 0; i--) {
+            if(nums[i] < nums[i+1]) {
+                int j = i + 1;
+                int minIndex = j;
+                while(j < len) {
+                    if(nums[j] < nums[minIndex] && nums[j] > nums[i]) {
+                        minIndex = j;
+                    }
+                    j++;
+                }
+                int tmp = nums[i];
+                nums[i] = nums[minIndex];
+                nums[minIndex] = tmp;
+                Arrays.sort(nums, i + 1, len - 1);
+                return;
+            }
+        }
+        Arrays.sort(nums);
+    }
+
+    public static double myPow(double x, int n) {
+        if(x == 0 || x == 1) {
+            return x;
+        }
+        boolean flag = true;
+        if(n < 0) {
+            if(n == -2147483648) {
+                return 1;
+            }
+            n = n * (-1);
+            flag = false;
+        }
+        if(x == -1) {
+            if(n % 2 == 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        if(n == 0) {
+            return 1;
+        }
+
+        // 快速幂
+        double cur = x;
+        double res = 1;
+        while(n != 0) {
+            if((n & 2) == 1) {
+                res = res * cur;
+            }
+            cur = cur * cur;
+            n = n >> 1;
+        }
+        if(!flag) {
+            res = 1 /  res;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         System.out.println("Test starts...");
-        int res = lengthOfLongestSubstring("aa");
-        System.out.println(res);
         System.out.println("Test end...");
+        double res = myPow(8.8, 3);
+        int nums[] = {1, 3, 2};
+        nextPermutation(nums);
 
         // Java Basic
         System.out.println("THE BEGINNING.");
@@ -62,6 +107,8 @@ public class HelloWorld {
         System.out.println("Int:");
         int intA = Integer.MAX_VALUE;
         int intB = Integer.MIN_VALUE;
+        int bull = 18;
+        String bullStr = Integer.toString(bull);
         System.out.println(intA); // INT_MAX 2147483647
         System.out.println(intB); // INT_MIN -2147483648
         // Array
@@ -71,16 +118,30 @@ public class HelloWorld {
         System.out.println(len);
         int[] array2 = {2, 1, 3};
         Arrays.sort(array2);
+        Arrays.sort(array2, 1, 3); // startIndex(inclusive), endIndex(exclusive)
+        // 将一个字符串数组按字典序重新排列
+        String array3[] = {"cba", "abc", "adb"};
+        Arrays.sort(array3);
         // List
         System.out.println("List:");
         List<Integer> list = new ArrayList<>();
+        List<Integer> newList = new ArrayList<Integer>(list); // copy list
         int a1 = 1;
         list.add(a1);
         System.out.println(list.get(0));
         // Map
+        Map<String, String> map = new HashMap<>();
+        map.containsKey("");
+        map.get("");
+        map.put("", "");
+        for(String s: map.keySet()) {
+            // do something
+        }
         // Set
         System.out.println("Set:");
         Set<List<Integer>> set = new HashSet<>();
+        List<Integer> setli = new ArrayList<>();
+        set.add(setli);
         List<List<Integer>> lli = new ArrayList<>();
         for(List<Integer> li : set) {
             lli.add(li);
@@ -127,6 +188,8 @@ public class HelloWorld {
         System.out.println("Character:");
         char ch = 'a';
         char chUpper = Character.toUpperCase(ch);
+        int intToChar = 9;
+        char chFromInt = Character.forDigit(intToChar, 10);
         System.out.println(ch);
         System.out.println(chUpper);
         String s1 = "";
